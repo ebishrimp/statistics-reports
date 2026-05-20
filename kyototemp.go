@@ -229,15 +229,13 @@ func plot_line(data []Data) {
 	var ticks []plot.Tick
 	var lastMonth time.Month
 
-	// インデックス i を使って、日付と気温を同時に処理する
 	for i := 0; i < length; i++ {
-		// 1. 日付文字列 (yyyy/M/d) を time.Time にパース
+
 		t, err := time.Parse("2006/1/2", date[i])
 		if err != nil {
-			panic(err) // フォーマットエラーがあればここで止める
+			panic(err)
 		}
 
-		// 2. グラフのプロット用データ（X=Unixタイム, Y=気温）を格納
 		pts1[i].X = float64(t.Unix())
 		pts2[i].X = float64(t.Unix())
 		pts3[i].X = float64(t.Unix())
@@ -246,19 +244,17 @@ func plot_line(data []Data) {
 		pts1[i].Y = ave[i]
 		pts2[i].Y = max[i]
 		pts3[i].Y = min[i]
-		pts4[i].Y = diff[i] // plotter.Values は [i] で直接アクセス可能
+		pts4[i].Y = diff[i]
 
-		// 3. 月ごとの目盛りラベルの生成（月が変わったタイミングを検知）
 		if t.Month() != lastMonth {
 			ticks = append(ticks, plot.Tick{
 				Value: float64(t.Unix()),
-				Label: t.Format("2006/01"), // 軸には "2026/05" のように綺麗にゼロ埋めして表示
+				Label: t.Format("2006/01"),
 			})
 			lastMonth = t.Month()
 		}
 	}
 
-	// 折れ線グラフをプロットデータから作成
 	l1, err := plotter.NewLine(pts1)
 	l2, err := plotter.NewLine(pts2)
 	l3, err := plotter.NewLine(pts3)
@@ -277,11 +273,9 @@ func plot_line(data []Data) {
 	p.Add(l1, l2, l3)
 	pd.Add(l4)
 
-	// X軸に生成した月ごとの目盛りをセット
 	p.X.Tick.Marker = plot.ConstantTicks(ticks)
 	pd.X.Tick.Marker = plot.ConstantTicks(ticks)
 
-	// 保存（横長にして見やすく）
 	if err := p.Save(8*vg.Inch, 4*vg.Inch, "./images/temperature_line.png"); err != nil {
 		panic(err)
 	}

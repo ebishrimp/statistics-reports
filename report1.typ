@@ -162,3 +162,8 @@
 
 === 折れ線グラフ
 #image("images/temperature_diff_line.png")
+
+#align(bottom)[
+  For the source, please refer to the following page.\
+  https://github.com/ebishrimp/statistics-reports
+]
