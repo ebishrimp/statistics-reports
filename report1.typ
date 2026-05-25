@@ -41,6 +41,7 @@
 #pagebreak()
 
 == 日本人の血液型の分布との比較
+#footnote[https://www.mhlw.go.jp/file/06-Seisakujouhou-11120000-Iyakushokuhinkyoku/0000116963_2.pdf を参照]
 厚生労働省によると、日本人の血液型分布はおおよそ\
 A : B : AB : O = 40 : 20 : 10 : 30\
 だという。一方今回のデータ解析の結果、Othersも含めおおよそ\
@@ -49,6 +50,8 @@ A : B : AB : O : others = 35 : 20 : 5 : 30 : 10\
 A : B : AB : O = 38 : 22 : 7 : 33\
 に近い値となる。
 したがって、今回のデータは日本における血液型の傾向に沿っているといえるだろう。
+
+
 
 #pagebreak()
 
