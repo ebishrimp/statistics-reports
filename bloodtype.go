@@ -93,8 +93,8 @@ func plotBar(data []float64) {
 func plotBand(data []float64) {
 	vA := plotter.Values{data[0]}
 	vB := plotter.Values{data[0] + data[1]}
-	vO := plotter.Values{data[0] + data[1] + data[2]}
-	vAB := plotter.Values{data[0] + data[1] + data[2] + data[3]}
+	vAB := plotter.Values{data[0] + data[1] + data[2]}
+	vO := plotter.Values{data[0] + data[1] + data[2] + data[3]}
 	vOther := plotter.Values{data[0] + data[1] + data[2] + data[3] + data[4]}
 
 	w := vg.Points(20)
@@ -115,8 +115,8 @@ func plotBand(data []float64) {
 	barOther.Color = plotutil.Color(4)
 
 	p.Add(barOther)
-	p.Add(barAB)
 	p.Add(barO)
+	p.Add(barAB)
 	p.Add(barB)
 	p.Add(barA)
 	p.NominalX("distribtion")
@@ -160,8 +160,8 @@ func pieChart(data []float64) {
 
 	pies[0].Labels.Nominal = []string{"Type A"}
 	pies[1].Labels.Nominal = []string{"Type B"}
-	pies[2].Labels.Nominal = []string{"Type O"}
-	pies[3].Labels.Nominal = []string{"Type AB"}
+	pies[2].Labels.Nominal = []string{"Type AB"}
+	pies[3].Labels.Nominal = []string{"Type O"}
 	pies[4].Labels.Nominal = []string{"Others"}
 
 	p.Add(pies[0], pies[1], pies[2], pies[3], pies[4])
